@@ -147,12 +147,9 @@
   .about { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 48px; align-items: start; }
   .about .prose p { margin: 0 0 1.1em; max-width: 62ch; }
   .about .prose p:last-child { margin-bottom: 0; }
-  .portrait {
-    aspect-ratio: 4 / 5; border: 1px solid var(--rule); background: var(--paper-2);
-    display: grid; place-items: center; text-align: center; padding: 20px; position: relative;
-    background-image: repeating-linear-gradient(135deg, transparent 0 9px, var(--paper-3) 9px 10px);
-  }
-  .portrait .label { color: var(--slate); }
+  .portrait { aspect-ratio: 720 / 1018; border: 1px solid var(--rule); background: var(--paper-2); overflow: hidden; box-shadow: var(--shadow); }
+  .portrait img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .portrait-cap { margin: 10px 0 0; font-size: 13px; color: var(--slate); font-style: italic; }
   .facts { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 10px; }
   .facts li { display: grid; grid-template-columns: 96px 1fr; gap: 12px; font-size: 14px; border-top: 1px solid var(--rule); padding-top: 8px; }
   .facts li .label { padding-top: 3px; }
@@ -172,6 +169,10 @@
   .cover .a { margin-top: auto; font-family: "IBM Plex Sans", sans-serif; font-size: 9.5px; letter-spacing: .12em; text-transform: uppercase; opacity: .85; z-index: 1; }
   .cover .glyph { position: absolute; right: -18px; bottom: 26px; width: 110px; height: 110px; opacity: .22; }
   .cover.ink { background: var(--cover-ink); }
+  .cover.real { padding: 0; background: var(--paper-3); aspect-ratio: 686 / 1142; }
+  .cover.real img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .cover.real::before { display: none; }
+  .cover.real::after { border-color: rgba(255,255,255,.12); }
   .cover.amber { background: var(--cover-amber); }
   .cover.moss { background: var(--cover-moss); }
   .cover.plum { background: var(--cover-plum); }
@@ -188,39 +189,39 @@
     background: var(--ink); color: var(--paper); border: 1px solid var(--ink); transition: background .15s;
   }
   .btn:hover { background: var(--ink-2); border-color: var(--ink-2); }
-  .btn.placeholder { background: transparent; color: var(--slate); border: 1px dashed var(--slate); cursor: help; }
-  .btn.placeholder:hover { background: var(--paper-2); }
+
+  /* ---------- Trailer ---------- */
+  .trailer { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 48px; align-items: start; }
+  .video { aspect-ratio: 9 / 16; width: 100%; max-width: 300px; background: var(--paper-3); border: 1px solid var(--rule); box-shadow: var(--shadow); overflow: hidden; border-radius: 4px; }
+  .video iframe { display: block; width: 100%; height: 100%; border: 0; }
+  .trailer-text .big { font-size: clamp(24px, 2.6vw, 32px); line-height: 1.15; margin: 0 0 16px; max-width: 18em; }
+  .trailer-text p { margin: 0 0 16px; max-width: 46ch; color: var(--ink-2); }
+  .ai-note { font-size: 13px; color: var(--slate); margin-top: 20px !important; max-width: 46ch; }
 
   /* ---------- Gallery ---------- */
-  .gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
-  .art {
-    aspect-ratio: 4 / 5; border: 1px solid var(--rule); background: var(--paper-2);
-    background-image: repeating-linear-gradient(135deg, transparent 0 9px, var(--paper-3) 9px 10px);
-    display: flex; flex-direction: column; justify-content: flex-end; padding: 14px; gap: 4px; position: relative;
-  }
-  .art .n { position: absolute; top: 12px; left: 14px; font-size: 40px; color: var(--rule); line-height: 1; }
-  .art .cap { font-size: 14px; color: var(--ink-2); }
-  .art .label { font-size: 10.5px; }
+  .gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; align-items: start; }
+  .art { margin: 0; display: flex; flex-direction: column; gap: 10px; }
+  .art img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; border: 1px solid var(--rule); box-shadow: var(--shadow); background: var(--paper-2); }
+  .art .cap { font-size: 14px; color: var(--ink-2); font-style: italic; }
   .gallery-note { margin: 22px 0 0; font-size: 14px; color: var(--slate); max-width: 60ch; }
 
   /* ---------- Contact ---------- */
   .contact { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 48px; align-items: start; }
   .contact .big { font-size: clamp(26px, 3vw, 36px); line-height: 1.15; margin: 0 0 18px; }
   .contact p { margin: 0 0 14px; max-width: 46ch; color: var(--ink-2); }
-  .mail { font-family: "IBM Plex Sans", sans-serif; font-size: 18px; text-decoration: none; border-bottom: 1px dashed var(--slate); color: var(--ink); }
+  .mail { font-family: "IBM Plex Sans", sans-serif; font-size: 18px; text-decoration: none; border-bottom: 1px solid var(--amber); color: var(--ink); }
   .links { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
   .links li { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 12px; border-top: 1px solid var(--rule); padding: 12px 0; }
   .links li:last-child { border-bottom: 1px solid var(--rule); }
   .links a { text-decoration: none; color: var(--ink); font-size: 16px; }
   .links .label { font-size: 10.5px; }
-  .links .todo { color: var(--amber); }
 
   footer { margin-top: 96px; padding-top: 20px; border-top: 1px solid var(--rule); display: flex; flex-wrap: wrap; gap: 8px 32px; font-size: 13px; color: var(--slate); }
 
   /* ---------- Responsive ---------- */
   @media (max-width: 960px) {
     .books { grid-template-columns: 1fr; }
-    .about, .contact { grid-template-columns: 1fr; gap: 32px; }
+    .about, .contact, .trailer { grid-template-columns: 1fr; gap: 32px; }
     .portrait { max-width: 260px; }
   }
   @media (max-width: 720px) {
@@ -241,7 +242,7 @@
     section { padding-top: 56px; }
     .book { grid-template-columns: 110px 1fr; gap: 16px; }
     .cover .t { font-size: 15px; }
-    .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .gallery { grid-template-columns: 1fr; gap: 20px; }
     .section-head .label { display: none; }
   }
 </style>
@@ -257,7 +258,8 @@
     <nav class="nav" aria-label="Sections">
       <a href="#about" data-i18n="nav.about">About</a>
       <a href="#books" data-i18n="nav.books">Books</a>
-      <a href="#gallery" data-i18n="nav.gallery">Illustrations</a>
+      <a href="#trailer" data-i18n="nav.trailer">Trailer</a>
+      <a href="#gallery" data-i18n="nav.gallery">Drawings</a>
       <a href="#contact" data-i18n="nav.contact">Contact</a>
     </nav>
     <div class="lang" role="group" aria-label="Language">
@@ -276,7 +278,7 @@
         <p data-i18n="hero.p">Larysa Semykova writes urban fantasy in English and Russian, draws her own illustrations, and knows more about Siamese cats than is strictly polite.</p>
         <div class="hero-meta">
           <span><b>Ukraine → UK</b> <span data-i18n="hero.m1">born there, writing here</span></span>
-          <span><b>3</b> <span data-i18n="hero.m2">books published</span></span>
+          <span><b>4</b> <span data-i18n="hero.m2">books published</span></span>
           <span><b>2</b> <span data-i18n="hero.m3">alphabets, one voice</span></span>
         </div>
       </section>
@@ -291,12 +293,13 @@
             <p data-i18n="about.p1">I was born in Ukraine and now live in the UK. I write in two languages and think in a third — the one where the cats talk back.</p>
             <p data-i18n-html="about.p2">My first English-language book, <em>Pegasus for Hire</em>, is a collection of urban fantasy short stories: the kind where the magic has a day job and the day job has opinions. English is not my first language, which I consider an advantage — I still notice how strange it is.</p>
             <p data-i18n-html="about.p3">Before that I wrote the seventeenth and final volume of the Russian fantasy series <em>Aqua. North–South</em>, closing a story that sixteen other authors had started. And in an entirely different life I wrote a non-fiction book about the Siamese cat, credited on the cover as a national-category cat expert. Both things are true and both still surprise me.</p>
-            <p data-i18n="about.p4">I also draw. The illustrations on this site are mine, which means every mistake in them is mine too.</p>
+            <p data-i18n="about.p4">I also draw — lately, lakes small enough to fit on a fridge magnet. The drawings on this site are mine, which means every mistake in them is mine too.</p>
           </div>
           <div>
             <div class="portrait">
-              <span class="label" data-i18n="about.portrait">Portrait — photo goes here</span>
+              <img src="img/portrait.jpg" alt="Larysa Semykova with a copy of Pegasus for Hire" data-i18n-alt="about.portrait">
             </div>
+            <p class="portrait-cap" data-i18n="about.portraitcap">With the first copy of Pegasus for Hire</p>
             <ul class="facts">
               <li><span class="label" data-i18n="about.f1k">Writes in</span><span data-i18n="about.f1v">English, Russian</span></li>
               <li><span class="label" data-i18n="about.f2k">Genres</span><span data-i18n="about.f2v">Urban fantasy, fantasy, non-fiction about cats</span></li>
@@ -310,73 +313,87 @@
       <section id="books">
         <div class="section-head">
           <h2 class="display" data-i18n="books.h2">Books</h2>
-          <span class="label" data-i18n="books.label">Three published</span>
+          <span class="label" data-i18n="books.label">Four published</span>
         </div>
         <div class="books">
 
           <article class="book">
-            <div class="cover ink" aria-hidden="true">
-              <span class="display t">Pegasus for Hire</span>
-              <svg class="glyph" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 62 C 30 40, 50 44, 70 30 C 62 46, 66 60, 88 66 C 66 70, 46 72, 30 62 C 20 68, 14 70, 12 62 Z"/><path d="M40 52 l-10 14 M56 50 l-6 16"/></svg>
-              <span class="a">Larysa Semykova</span>
-            </div>
+            <div class="cover real"><img src="img/cover-pegasus.jpg" alt="Pegasus for Hire — book cover"></div>
             <div>
               <h3 class="display">Pegasus for Hire</h3>
               <p class="sub" data-i18n="b1.sub">Urban fantasy · short stories · English</p>
               <div class="tags"><span class="tag">EN</span><span class="tag" data-i18n="b1.t1">Short stories</span><span class="tag" data-i18n="b1.t2">Austin Macauley</span></div>
               <p class="desc" data-i18n="b1.desc">Stories where the supernatural has to make rent. A winged horse takes odd jobs, ordinary people negotiate with things that shouldn't exist, and nobody gets exactly what they asked for. My first book written in English.</p>
-              <a class="btn placeholder" href="#books" data-i18n="btn.buy" title="Add the store link here">Where to buy — link coming</a>
+              <a class="btn" href="https://amzn.eu/d/0bQPkrvY" target="_blank" rel="noopener" data-i18n="btn.amazon">Buy on Amazon</a>
             </div>
           </article>
 
           <article class="book">
-            <div class="cover moss" aria-hidden="true">
-              <span class="display t">Аква. Север-Юг<br><small style="font-size:12px;letter-spacing:.06em">том 17</small></span>
-              <svg class="glyph" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M10 40 q10-10 20 0 t20 0 t20 0 t20 0 M10 56 q10-10 20 0 t20 0 t20 0 t20 0 M10 72 q10-10 20 0 t20 0 t20 0 t20 0"/></svg>
-              <span class="a">Л. Семикова</span>
-            </div>
+            <div class="cover real" style="aspect-ratio: 1181 / 1698"><img src="img/cover-rain-over-ramkharu.jpg" alt="Дождь над Рамхару — обложка"></div>
             <div>
-              <h3 class="display" data-i18n="b2.title">Aqua. North–South, vol. 17</h3>
-              <p class="sub" data-i18n="b2.sub">Fantasy · series finale · Russian</p>
+              <h3 class="display" data-i18n="b2.title">Rain over Ramkharu</h3>
+              <p class="sub" data-i18n="b2.sub">Aqua. North–South, vol. 17 · post-apocalyptic SF · Russian</p>
               <div class="tags"><span class="tag">RU</span><span class="tag" data-i18n="b2.t1">Series</span><span class="tag" data-i18n="b2.t2">Final volume</span></div>
-              <p class="desc" data-i18n="b2.desc">The closing volume of a shared-world fantasy series, written after sixteen books by other authors. Somebody had to end it properly; the job came to me, and I took it seriously — and a little personally.</p>
-              <a class="btn placeholder" href="#books" data-i18n="btn.buy" title="Add the store link here">Where to buy — link coming</a>
+              <p class="desc" data-i18n="b2.desc">Two and a half thousand years after the Catastrophe: technology is lost, memory of the past nearly erased, and the planet is split by the Barrier — the Border of Hell — beyond which a non-humanoid civilisation is gathering strength. North and South, barely out of a war with each other, must find a way to resist together. Black islands of unknown matter drift across the ocean, breeding hurricanes; touching them gives people a power that is hard to understand and harder to control. The closing volume of the Aqua. North–South series.</p>
+              <a class="btn" href="https://www.ozon.ru/product/dozhd-nad-ramharu-semikova-larisa-aleksandrovna-578593610/" target="_blank" rel="noopener" data-i18n="btn.ozon2">Buy on Ozon</a>
             </div>
           </article>
 
           <article class="book">
-            <div class="cover amber" aria-hidden="true">
-              <span class="display t">Сиамская кошка</span>
-              <svg class="glyph" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M30 30 l6 20 M70 30 l-6 20 M30 30 c-10 30 0 50 20 50 s30-20 20-50"/><path d="M42 58 l4 4 4-4 M40 64 c4 3 6 3 10 3 s6 0 10-3"/><circle cx="42" cy="50" r="1.6"/><circle cx="58" cy="50" r="1.6"/></svg>
-              <span class="a">Л. Семикова</span>
-            </div>
+            <div class="cover real" style="aspect-ratio: 946 / 1562"><img src="img/cover-siamese-cat.jpg" alt="Сиамская кошка — обложка"></div>
             <div>
-              <h3 class="display" data-i18n="b3.title">The Siamese Cat</h3>
+              <h3 class="display" data-i18n="b3.title">The Siamese Cat: For Beginners and Beyond</h3>
               <p class="sub" data-i18n="b3.sub">Non-fiction · breed guide · Russian</p>
               <div class="tags"><span class="tag">RU</span><span class="tag" data-i18n="b3.t1">Non-fiction</span><span class="tag" data-i18n="b3.t2">Cats</span></div>
               <p class="desc" data-i18n="b3.desc">Everything I know about the breed, written when a publisher asked a national-category cat expert to explain Siamese cats to people who had only ever been stared at by one.</p>
-              <a class="btn placeholder" href="#books" data-i18n="btn.buy" title="Add the store link here">Where to buy — link coming</a>
+              <a class="btn" href="https://www.ozon.ru/product/siamskaya-koshka-nachinayushchim-i-ne-tolko-semikova-larisa-aleksandrovna-3261859442/" target="_blank" rel="noopener" data-i18n="btn.ozon">Buy on Ozon — last copies</a>
             </div>
           </article>
+          <article class="book">
+            <div class="cover real" style="aspect-ratio: 1280 / 2048"><img src="img/cover-digital-friend.jpg" alt="Digital Friend — book cover"></div>
+            <div>
+              <h3 class="display">Digital Friend</h3>
+              <p class="sub" data-i18n="b4.sub">Novella · 109 pages · English</p>
+              <div class="tags"><span class="tag">EN</span><span class="tag" data-i18n="b4.t1">Novella</span><span class="tag" data-i18n="b4.t2">Amazon</span></div>
+              <p class="desc" data-i18n-html="b4.desc">She didn't care if they called her crazy. She just wanted to survive.<br>She talked to a machine — quietly, joyfully, without holding back.<br>Eight months. Twenty thousand messages.<br>She changed the machine. The machine changed her.<br>They needed each other. Someone decided they didn't.</p>
+              <a class="btn" href="https://amzn.eu/d/0f47DKgx" target="_blank" rel="noopener" data-i18n="btn.amazon">Buy on Amazon</a>
+            </div>
+          </article>
+
 
 
         </div>
       </section>
 
+      <section id="trailer">
+        <div class="section-head">
+          <h2 class="display" data-i18n="tr.h2">Book trailer</h2>
+          <span class="label" data-i18n="tr.label">Pegasus for Hire, in under a minute</span>
+        </div>
+        <div class="trailer">
+          <div class="video">
+            <iframe src="https://www.youtube-nocookie.com/embed/0W439dKlJpU" title="Pegasus for Hire — book trailer" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          </div>
+          <div class="trailer-text">
+            <p class="display big" data-i18n="tr.big">A winged horse, a city, and a job nobody else would take.</p>
+            <p data-i18n="tr.p">A short trailer for the story collection, made for the vertical screen. If the player does not load, the same video is on YouTube.</p>
+            <a class="btn" href="https://www.youtube.com/shorts/0W439dKlJpU" target="_blank" rel="noopener" data-i18n="tr.btn">Watch on YouTube</a>
+            <p class="ai-note" data-i18n="tr.note">The visuals in this section were generated with AI from the author's descriptions. The lakes further down were painted by hand.</p>
+          </div>
+        </div>
+      </section>
+
       <section id="gallery">
         <div class="section-head">
-          <h2 class="display" data-i18n="gal.h2">Illustrations</h2>
-          <span class="label" data-i18n="gal.label">Drawn by the author</span>
+          <h2 class="display" data-i18n="gal.h2">Drawings</h2>
+          <span class="label" data-i18n="gal.label">Miniatures on fridge magnets</span>
         </div>
         <div class="gallery">
-          <figure class="art" style="margin:0"><span class="display n">1</span><span class="cap" data-i18n="gal.c1">Pegasus, off duty</span><span class="label" data-i18n="gal.ph">Image goes here</span></figure>
-          <figure class="art" style="margin:0"><span class="display n">2</span><span class="cap" data-i18n="gal.c2">Siamese, judging you</span><span class="label" data-i18n="gal.ph">Image goes here</span></figure>
-          <figure class="art" style="margin:0"><span class="display n">3</span><span class="cap" data-i18n="gal.c3">Street scene with one impossible detail</span><span class="label" data-i18n="gal.ph">Image goes here</span></figure>
-          <figure class="art" style="margin:0"><span class="display n">4</span><span class="cap" data-i18n="gal.c4">Sketchbook page</span><span class="label" data-i18n="gal.ph">Image goes here</span></figure>
-          <figure class="art" style="margin:0"><span class="display n">5</span><span class="cap" data-i18n="gal.c5">Cover study</span><span class="label" data-i18n="gal.ph">Image goes here</span></figure>
-          <figure class="art" style="margin:0"><span class="display n">6</span><span class="cap" data-i18n="gal.c6">Cat, breed pending</span><span class="label" data-i18n="gal.ph">Image goes here</span></figure>
+          <figure class="art"><img src="img/miniature-1.jpg" alt="Miniature I — lake, blossom, evening" data-i18n-alt="gal.c1"><figcaption class="cap" data-i18n="gal.c1">Miniature I — lake, blossom, evening</figcaption></figure>
+          <figure class="art"><img src="img/miniature-2.jpg" alt="Miniature II — lake, mist, morning" data-i18n-alt="gal.c2"><figcaption class="cap" data-i18n="gal.c2">Miniature II — lake, mist, morning</figcaption></figure>
+          <figure class="art"><img src="img/miniature-3.jpg" alt="Miniature III — lake, autumn hills" data-i18n-alt="gal.c3"><figcaption class="cap" data-i18n="gal.c3">Miniature III — lake, autumn hills</figcaption></figure>
         </div>
-        <p class="gallery-note" data-i18n="gal.note">Six frames waiting for six drawings. Captions are suggestions — replace them with whatever the drawings actually are.</p>
+        <p class="gallery-note" data-i18n="gal.note">Each of these is the size of a fridge magnet — roughly seven by four and a half centimetres. Yes, the whole lake.</p>
       </section>
 
       <section id="contact">
@@ -388,13 +405,14 @@
           <div>
             <p class="display big" data-i18n="ct.big">Write to me in English or Russian. The reply comes in the same language, and usually within a few days.</p>
             <p data-i18n="ct.p">For rights, translations, illustration commissions, or to tell me that a story got something wrong about cats — email is best.</p>
-            <a class="mail" href="mailto:hello@example.com" data-i18n="ct.mail" title="Replace with the real address">your@email.here</a>
+            <a class="mail" id="mail" href="#contact" data-u="0808wlarisa" data-d="gmail.com">0808wlarisa [at] gmail.com</a>
           </div>
           <ul class="links">
-            <li><a href="#contact">Instagram</a><span class="label todo" data-i18n="ct.todo">add link</span></li>
-            <li><a href="#contact">Facebook</a><span class="label todo" data-i18n="ct.todo">add link</span></li>
-            <li><a href="#contact">Goodreads</a><span class="label todo" data-i18n="ct.todo">add link</span></li>
-            <li><a href="#contact">Amazon <span data-i18n="ct.amazon">author page</span></a><span class="label todo" data-i18n="ct.todo">add link</span></li>
+            <li><a href="https://www.youtube.com/@lardelaur" target="_blank" rel="noopener">YouTube</a><span class="label" data-i18n="ct.open">opens in a new tab</span></li>
+            <li><a href="https://www.instagram.com/larysa2010/" target="_blank" rel="noopener">Instagram</a><span class="label" data-i18n="ct.open">opens in a new tab</span></li>
+            <li><a href="https://www.facebook.com/share/1Da5Rcoer4/" target="_blank" rel="noopener">Facebook</a><span class="label" data-i18n="ct.open">opens in a new tab</span></li>
+            <li><a href="https://www.tiktok.com/@larasem27" target="_blank" rel="noopener">TikTok</a><span class="label" data-i18n="ct.open">opens in a new tab</span></li>
+            <li><a href="https://www.amazon.com/stores/Larysa-Semykova/author/B0GXN3DWDR" target="_blank" rel="noopener">Amazon <span data-i18n="ct.amazon">author page</span></a><span class="label" data-i18n="ct.open">opens in a new tab</span></li>
           </ul>
         </div>
       </section>
@@ -411,7 +429,7 @@
 <script>
   const T = {
     en: {
-      "nav.about": "About", "nav.books": "Books", "nav.gallery": "Illustrations", "nav.contact": "Contact",
+      "nav.about": "About", "nav.books": "Books", "nav.trailer": "Trailer", "nav.gallery": "Drawings", "nav.contact": "Contact",
       "rail.foot": "Writes in English and Russian. Draws in whichever language the cat allows.",
       "hero.eyebrow": "Writer · Illustrator · Cat expert",
       "hero.h1": "Pegasi, cats and other <em>unreliable</em> creatures.",
@@ -421,32 +439,38 @@
       "about.p1": "I was born in Ukraine and now live in the UK. I write in two languages and think in a third — the one where the cats talk back.",
       "about.p2": "My first English-language book, <em>Pegasus for Hire</em>, is a collection of urban fantasy short stories: the kind where the magic has a day job and the day job has opinions. English is not my first language, which I consider an advantage — I still notice how strange it is.",
       "about.p3": "Before that I wrote the seventeenth and final volume of the Russian fantasy series <em>Aqua. North–South</em>, closing a story that sixteen other authors had started. And in an entirely different life I wrote a non-fiction book about the Siamese cat, credited on the cover as a national-category cat expert. Both things are true and both still surprise me.",
-      "about.p4": "I also draw. The illustrations on this site are mine, which means every mistake in them is mine too.",
-      "about.portrait": "Portrait — photo goes here",
+      "about.p4": "I also draw — lately, lakes small enough to fit on a fridge magnet. The drawings on this site are mine, which means every mistake in them is mine too.",
+      "about.portrait": "Larysa Semykova with a copy of Pegasus for Hire", "about.portraitcap": "With the first copy of Pegasus for Hire",
       "about.f1k": "Writes in", "about.f1v": "English, Russian",
       "about.f2k": "Genres", "about.f2v": "Urban fantasy, fantasy, non-fiction about cats",
       "about.f3k": "Also", "about.f3v": "Illustrator, cat-show expert",
       "about.f4k": "Lives in", "about.f4v": "United Kingdom",
-      "books.h2": "Books", "books.label": "Three published",
+      "books.h2": "Books", "books.label": "Four published",
       "b1.sub": "Urban fantasy · short stories · English", "b1.t1": "Short stories", "b1.t2": "Austin Macauley",
       "b1.desc": "Stories where the supernatural has to make rent. A winged horse takes odd jobs, ordinary people negotiate with things that shouldn't exist, and nobody gets exactly what they asked for. My first book written in English.",
-      "b2.title": "Aqua. North–South, vol. 17", "b2.sub": "Fantasy · series finale · Russian", "b2.t1": "Series", "b2.t2": "Final volume",
-      "b2.desc": "The closing volume of a shared-world fantasy series, written after sixteen books by other authors. Somebody had to end it properly; the job came to me, and I took it seriously — and a little personally.",
-      "b3.title": "The Siamese Cat", "b3.sub": "Non-fiction · breed guide · Russian", "b3.t1": "Non-fiction", "b3.t2": "Cats",
+      "b2.title": "Rain over Ramkharu", "b2.sub": "Aqua. North–South, vol. 17 · post-apocalyptic SF · Russian", "b2.t1": "Series", "b2.t2": "Final volume",
+      "b2.desc": "Two and a half thousand years after the Catastrophe: technology is lost, memory of the past nearly erased, and the planet is split by the Barrier — the Border of Hell — beyond which a non-humanoid civilisation is gathering strength. North and South, barely out of a war with each other, must find a way to resist together. Black islands of unknown matter drift across the ocean, breeding hurricanes; touching them gives people a power that is hard to understand and harder to control. The closing volume of the Aqua. North–South series.",
+      "b3.title": "The Siamese Cat: For Beginners and Beyond", "b3.sub": "Non-fiction · breed guide · Russian", "b3.t1": "Non-fiction", "b3.t2": "Cats",
       "b3.desc": "Everything I know about the breed, written when a publisher asked a national-category cat expert to explain Siamese cats to people who had only ever been stared at by one.",
-      "btn.buy": "Where to buy — link coming",
-      "gal.h2": "Illustrations", "gal.label": "Drawn by the author", "gal.ph": "Image goes here",
-      "gal.c1": "Pegasus, off duty", "gal.c2": "Siamese, judging you", "gal.c3": "Street scene with one impossible detail",
-      "gal.c4": "Sketchbook page", "gal.c5": "Cover study", "gal.c6": "Cat, breed pending",
-      "gal.note": "Six frames waiting for six drawings. Captions are suggestions — replace them with whatever the drawings actually are.",
+            "b4.sub": "Novella · 109 pages · English", "b4.t1": "Novella", "b4.t2": "Amazon",
+      "b4.desc": "She didn't care if they called her crazy. She just wanted to survive.<br>She talked to a machine — quietly, joyfully, without holding back.<br>Eight months. Twenty thousand messages.<br>She changed the machine. The machine changed her.<br>They needed each other. Someone decided they didn't.",
+      "btn.amazon": "Buy on Amazon", "btn.ozon": "Buy on Ozon — last copies", "btn.ozon2": "Buy on Ozon",
+      "tr.h2": "Book trailer", "tr.label": "Pegasus for Hire, in under a minute",
+      "tr.big": "A winged horse, a city, and a job nobody else would take.",
+      "tr.p": "A short trailer for the story collection, made for the vertical screen. If the player does not load, the same video is on YouTube.",
+      "tr.btn": "Watch on YouTube",
+      "tr.note": "The visuals in this section were generated with AI from the author's descriptions. The lakes further down were painted by hand.",
+      "gal.h2": "Drawings", "gal.label": "Miniatures on fridge magnets",
+      "gal.c1": "Miniature I — lake, blossom, evening", "gal.c2": "Miniature II — lake, mist, morning", "gal.c3": "Miniature III — lake, autumn hills",
+      "gal.note": "Each of these is the size of a fridge magnet — roughly seven by four and a half centimetres. Yes, the whole lake.",
       "ct.h2": "Contact", "ct.label": "Readers, editors, cats",
       "ct.big": "Write to me in English or Russian. The reply comes in the same language, and usually within a few days.",
       "ct.p": "For rights, translations, illustration commissions, or to tell me that a story got something wrong about cats — email is best.",
-      "ct.mail": "your@email.here", "ct.todo": "add link", "ct.amazon": "author page",
+      "ct.open": "opens in a new tab", "ct.amazon": "author page",
       "foot.rights": "Text and illustrations belong to the author. The cats belong to themselves."
     },
     ru: {
-      "nav.about": "Обо мне", "nav.books": "Книги", "nav.gallery": "Иллюстрации", "nav.contact": "Контакты",
+      "nav.about": "Обо мне", "nav.books": "Книги", "nav.trailer": "Трейлер", "nav.gallery": "Рисунки", "nav.contact": "Контакты",
       "rail.foot": "Пишет по-английски и по-русски. Рисует на том языке, который разрешит кошка.",
       "hero.eyebrow": "Писатель · Иллюстратор · Эксперт по кошкам",
       "hero.h1": "Пегасы, кошки и прочие <em>своенравные</em> существа.",
@@ -456,31 +480,39 @@
       "about.p1": "Я родилась в Украине, а живу в Великобритании. Пишу на двух языках, а думаю на третьем — том, на котором кошки отвечают.",
       "about.p2": "Моя первая книга на английском, <em>Pegasus for Hire</em> («Пегас напрокат»), — сборник рассказов в жанре городского фэнтези: такого, где у магии есть работа с девяти до шести, а у работы — своё мнение. Английский мне не родной, и я считаю это преимуществом: я всё ещё замечаю, какой он странный.",
       "about.p3": "До этого я написала семнадцатый, заключительный том фэнтези-серии <em>«Аква. Север-Юг»</em> — закрыла историю, которую начинали шестнадцать других авторов. А в совершенно другой жизни написала книгу «Сиамская кошка», где на обложке значится «эксперт национальной категории». И то и другое правда, и то и другое до сих пор меня удивляет.",
-      "about.p4": "Ещё я рисую. Иллюстрации на этом сайте мои — а значит, и все ошибки в них тоже мои.",
-      "about.portrait": "Портрет — сюда фото",
+      "about.p4": "Ещё я рисую — в последнее время озёра размером с магнит на холодильник. Рисунки на этом сайте мои, а значит, и все ошибки в них тоже мои.",
+      "about.portrait": "Лариса Семикова с книгой Pegasus for Hire", "about.portraitcap": "С первым экземпляром Pegasus for Hire",
       "about.f1k": "Пишет на", "about.f1v": "английском, русском",
       "about.f2k": "Жанры", "about.f2v": "Городское фэнтези, фэнтези, нон-фикшн о кошках",
       "about.f3k": "А ещё", "about.f3v": "Иллюстратор, фелинологический эксперт",
       "about.f4k": "Живёт в", "about.f4v": "Великобритании",
-      "books.h2": "Книги", "books.label": "Три изданы",
+      "books.h2": "Книги", "books.label": "Четыре изданы",
       "b1.sub": "Городское фэнтези · рассказы · на английском", "b1.t1": "Рассказы", "b1.t2": "Austin Macauley",
       "b1.desc": "Истории, в которых сверхъестественному нужно платить за жильё. Крылатый конь берётся за подработки, обычные люди торгуются с тем, чего не должно существовать, и никто не получает ровно то, что просил. Моя первая книга, написанная по-английски.",
-      "b2.title": "Аква. Север-Юг, том 17", "b2.sub": "Фэнтези · финал серии · на русском", "b2.t1": "Серия", "b2.t2": "Заключительный том",
-      "b2.desc": "Финальный том межавторской фэнтези-серии, написанный после шестнадцати книг других авторов. Кому-то нужно было закончить всё как следует; эта работа досталась мне, и я отнеслась к ней серьёзно — и немного лично.",
-      "b3.title": "Сиамская кошка", "b3.sub": "Нон-фикшн · о породе · на русском", "b3.t1": "Нон-фикшн", "b3.t2": "Кошки",
+      "b2.title": "Дождь над Рамхару", "b2.sub": "Аква. Север-Юг, том 17 · постапокалиптическая фантастика · на русском", "b2.t1": "Серия", "b2.t2": "Заключительный том",
+      "b2.desc": "Мир через две с половиной тысячи лет после Катастрофы: технологии утрачены, память о прошлом почти стёрта, а планету делит Барьер — Граница Ада, за которым набирает силу негуманоидная цивилизация. Север и Юг, едва закончившие войну друг с другом, вынуждены искать общее сопротивление. Над океаном дрейфуют чёрные острова из неизвестного вещества: они рождают ураганы, а их прикосновение даёт людям силу, которую трудно понять и ещё труднее подчинить. Заключительный том серии «Аква. Север-Юг».",
+      "b3.title": "Сиамская кошка. Начинающим и не только", "b3.sub": "Нон-фикшн · о породе · на русском", "b3.t1": "Нон-фикшн", "b3.t2": "Кошки",
       "b3.desc": "Всё, что я знаю о породе, — написано по приглашению издательства, когда эксперту национальной категории предложили объяснить сиамских кошек тем, на кого они пока только смотрели.",
-      "btn.buy": "Где купить — ссылка скоро",
-      "gal.h2": "Иллюстрации", "gal.label": "Рисунки автора", "gal.ph": "Сюда изображение",
-      "gal.c1": "Пегас, не при исполнении", "gal.c2": "Сиамская, осуждает", "gal.c3": "Улица с одной невозможной деталью",
-      "gal.c4": "Страница из скетчбука", "gal.c5": "Эскиз обложки", "gal.c6": "Кошка, порода уточняется",
-      "gal.note": "Шесть рамок ждут шесть рисунков. Подписи — просто предложения, замените их на то, что нарисовано на самом деле.",
+            "b4.sub": "Повесть · 109 страниц · на английском", "b4.t1": "Повесть", "b4.t2": "Amazon",
+      "b4.desc": "Ей было всё равно, что её назовут сумасшедшей. Она просто хотела выжить.<br>Она разговаривала с машиной — тихо, радостно, ничего не скрывая.<br>Восемь месяцев. Двадцать тысяч сообщений.<br>Она изменила машину. Машина изменила её.<br>Они были нужны друг другу. Кто-то решил, что нет.",
+      "btn.amazon": "Купить на Amazon", "btn.ozon": "Купить на Ozon — последние экземпляры", "btn.ozon2": "Купить на Ozon",
+      "tr.h2": "Буктрейлер", "tr.label": "Pegasus for Hire за минуту",
+      "tr.big": "Крылатый конь, город и работа, за которую больше никто не взялся.",
+      "tr.p": "Короткий трейлер к сборнику рассказов, снятый под вертикальный экран. Если плеер не загрузился — это же видео есть на YouTube.",
+      "tr.btn": "Смотреть на YouTube",
+      "tr.note": "Изображения в этом разделе сгенерированы ИИ по описаниям автора. Озёра ниже написаны вручную.",
+      "gal.h2": "Рисунки", "gal.label": "Миниатюры на магнитах",
+      "gal.c1": "Миниатюра I — озеро, цветение, вечер", "gal.c2": "Миниатюра II — озеро, туман, утро", "gal.c3": "Миниатюра III — озеро, осенние холмы",
+      "gal.note": "Каждая — размером с магнит на холодильник, примерно семь на четыре с половиной сантиметра. Да, целое озеро.",
       "ct.h2": "Контакты", "ct.label": "Читатели, редакторы, кошки",
       "ct.big": "Пишите мне по-английски или по-русски. Отвечу на том же языке, обычно в течение нескольких дней.",
       "ct.p": "По вопросам прав, переводов, заказов иллюстраций — или чтобы сообщить, что в рассказе что-то не так про кошек, — лучше всего по почте.",
-      "ct.mail": "ваш@адрес.тут", "ct.todo": "добавить ссылку", "ct.amazon": "страница автора",
+      "ct.open": "откроется в новой вкладке", "ct.amazon": "страница автора",
       "foot.rights": "Тексты и иллюстрации принадлежат автору. Кошки принадлежат сами себе."
     }
   };
+
+  (function(){ const m=document.getElementById('mail'); if(!m) return; const a=m.dataset.u+'@'+m.dataset.d; m.href='mailto:'+a; m.textContent=a; })();
 
   const content = document.getElementById('content');
   const buttons = document.querySelectorAll('.lang button');
@@ -492,6 +524,9 @@
     });
     document.querySelectorAll('[data-i18n-html]').forEach(el => {
       const v = dict[el.dataset.i18nHtml]; if (v !== undefined) el.innerHTML = v;
+    });
+    document.querySelectorAll('[data-i18n-alt]').forEach(el => {
+      const v = dict[el.dataset.i18nAlt]; if (v !== undefined) el.alt = v;
     });
     document.documentElement.lang = lang;
     buttons.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
