@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -260,7 +262,7 @@
       <a href="#books" data-i18n="nav.books">Books</a>
       <a href="#trailer" data-i18n="nav.trailer">Trailer</a>
       <a href="#gallery" data-i18n="nav.gallery">Drawings</a>
-      <a href="#contact" data-i18n="nav.contact">Contact</a>
+      <a href="#notes" data-i18n="nav.notes">Notes</a>      <a href="#contact" data-i18n="nav.contact">Contact</a>
     </nav>
     <div class="lang" role="group" aria-label="Language">
       <button type="button" data-lang="en" aria-pressed="true">EN</button>
@@ -396,7 +398,7 @@
         <p class="gallery-note" data-i18n="gal.note">Each of these is the size of a fridge magnet — roughly seven by four and a half centimetres. Yes, the whole lake.</p>
       </section>
 
-      <section id="contact">
+      <section id="notes">        <div class="section-head">          <h2 class="display" data-i18n="nt.h2">Notes</h2>          <span class="label" data-i18n="nt.label">Written in English</span>        </div>        <ul class="links">          {% for post in site.posts limit:8 %}          <li><a href="{{ post.url }}">{{ post.title }}</a><span class="label">{{ post.date | date: "%-d %b %Y" }}</span></li>          {% endfor %}        </ul>        <p class="gallery-note" data-i18n="nt.note">Longer thoughts that do not fit into a post on social media — about books, covers, cats and the work itself.</p>      </section>      <section id="contact">
         <div class="section-head">
           <h2 class="display" data-i18n="ct.h2">Contact</h2>
           <span class="label" data-i18n="ct.label">Readers, editors, cats</span>
@@ -429,7 +431,7 @@
 <script>
   const T = {
     en: {
-      "nav.about": "About", "nav.books": "Books", "nav.trailer": "Trailer", "nav.gallery": "Drawings", "nav.contact": "Contact",
+      "nav.about": "About", "nav.books": "Books", "nav.trailer": "Trailer", "nav.gallery": "Drawings", "nav.notes": "Notes", "nav.contact": "Contact",
       "rail.foot": "Writes in English and Russian. Draws in whichever language the cat allows.",
       "hero.eyebrow": "Writer · Illustrator · Cat expert",
       "hero.h1": "Pegasi, cats and other <em>unreliable</em> creatures.",
@@ -463,14 +465,14 @@
       "gal.h2": "Drawings", "gal.label": "Miniatures on fridge magnets",
       "gal.c1": "Miniature I — lake, blossom, evening", "gal.c2": "Miniature II — lake, mist, morning", "gal.c3": "Miniature III — lake, autumn hills",
       "gal.note": "Each of these is the size of a fridge magnet — roughly seven by four and a half centimetres. Yes, the whole lake.",
-      "ct.h2": "Contact", "ct.label": "Readers, editors, cats",
+      "nt.h2": "Notes", "nt.label": "Written in English",      "nt.note": "Longer thoughts that do not fit into a post on social media — about books, covers, cats and the work itself.",      "ct.h2": "Contact", "ct.label": "Readers, editors, cats",
       "ct.big": "Write to me in English or Russian. The reply comes in the same language, and usually within a few days.",
       "ct.p": "For rights, translations, illustration commissions, or to tell me that a story got something wrong about cats — email is best.",
       "ct.open": "opens in a new tab", "ct.amazon": "author page",
       "foot.rights": "Text and illustrations belong to the author. The cats belong to themselves."
     },
     ru: {
-      "nav.about": "Обо мне", "nav.books": "Книги", "nav.trailer": "Трейлер", "nav.gallery": "Рисунки", "nav.contact": "Контакты",
+      "nav.about": "Обо мне", "nav.books": "Книги", "nav.trailer": "Трейлер", "nav.gallery": "Рисунки", "nav.notes": "Записи", "nav.contact": "Контакты",
       "rail.foot": "Пишет по-английски и по-русски. Рисует на том языке, который разрешит кошка.",
       "hero.eyebrow": "Писатель · Иллюстратор · Эксперт по кошкам",
       "hero.h1": "Пегасы, кошки и прочие <em>своенравные</em> существа.",
@@ -504,7 +506,7 @@
       "gal.h2": "Рисунки", "gal.label": "Миниатюры на магнитах",
       "gal.c1": "Миниатюра I — озеро, цветение, вечер", "gal.c2": "Миниатюра II — озеро, туман, утро", "gal.c3": "Миниатюра III — озеро, осенние холмы",
       "gal.note": "Каждая — размером с магнит на холодильник, примерно семь на четыре с половиной сантиметра. Да, целое озеро.",
-      "ct.h2": "Контакты", "ct.label": "Читатели, редакторы, кошки",
+      "nt.h2": "Записи", "nt.label": "На английском",      "nt.note": "Длинные заметки, которые не влезают в пост, — о книгах, обложках, кошках и самой работе. Записи на английском.",      "ct.h2": "Контакты", "ct.label": "Читатели, редакторы, кошки",
       "ct.big": "Пишите мне по-английски или по-русски. Отвечу на том же языке, обычно в течение нескольких дней.",
       "ct.p": "По вопросам прав, переводов, заказов иллюстраций — или чтобы сообщить, что в рассказе что-то не так про кошек, — лучше всего по почте.",
       "ct.open": "откроется в новой вкладке", "ct.amazon": "страница автора",
